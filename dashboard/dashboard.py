@@ -4,16 +4,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
 # Data Gathering
-customers_df = pd.read_csv("../data/customers_dataset.csv")
-geolocation_df = pd.read_csv("../data/geolocation_dataset.csv")
-orders_df = pd.read_csv("../data/orders_dataset.csv")
-order_items_df = pd.read_csv("../data/order_items_dataset.csv")
-order_payments_df = pd.read_csv("../data/order_payments_dataset.csv")
-order_reviews_df = pd.read_csv("../data/order_reviews_dataset.csv")
-products_df = pd.read_csv("../data/products_dataset.csv")
-product_category_name_translations_df = pd.read_csv("../data/product_category_name_translation.csv")
-sellers_df = pd.read_csv("../data/sellers_dataset.csv")
+customers_df = pd.read_csv(os.path.join(current_dir,"../data/customers_dataset.csv"))
+geolocation_df = pd.read_csv(os.path.join(current_dir,"../data/geolocation_dataset.csv"))
+orders_df = pd.read_csv(os.path.join(current_dir,"../data/orders_dataset.csv"))
+order_items_df = pd.read_csv(os.path.join(current_dir,"../data/order_items_dataset.csv"))
+order_payments_df = pd.read_csv(os.path.join(current_dir,"../data/order_payments_dataset.csv"))
+order_reviews_df = pd.read_csv(os.path.join(current_dir,"../data/order_reviews_dataset.csv"))
+products_df = pd.read_csv(os.path.join(current_dir,"../data/products_dataset.csv"))
+product_category_name_translations_df = pd.read_csv(os.path.join(current_dir,"../data/product_category_name_translation.csv"))
+sellers_df = pd.read_csv(os.path.join(current_dir,"../data/sellers_dataset.csv"))
+
 datetime_columns = ['review_creation_date', 'review_answer_timestamp']
 for column in datetime_columns:
     order_reviews_df[column] = pd.to_datetime(order_reviews_df[column])
